@@ -10,7 +10,7 @@ import { SessionProvider } from "next-auth/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Admin | NoHasan",
+  title: "Admin | HealthyHarvest",
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NextTopLoader showSpinner={false} color="#D4A373" />
+          <NextTopLoader showSpinner={false} color="#F7B50C" />
           <AdminPanelLayout>{children}</AdminPanelLayout>
           <Toaster />
         </ThemeProvider>

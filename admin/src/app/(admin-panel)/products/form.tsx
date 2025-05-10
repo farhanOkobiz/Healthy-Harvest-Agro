@@ -366,7 +366,7 @@ export const CreateProductForm: React.FC = () => {
                   </FormItem>
                 )}
               />
-                            <FormField
+                            {/* <FormField
                 control={form.control}
                 name="gender"
                 render={({ field }) => (
@@ -396,8 +396,8 @@ export const CreateProductForm: React.FC = () => {
                     </FormItem>
                   </div>
                 )}
-              />
-              <FormField
+              /> */}
+              {/* <FormField
                 control={form.control}
                 name="brandRef"
                 render={({ field }) => (
@@ -405,6 +405,7 @@ export const CreateProductForm: React.FC = () => {
                     <FormItem className="flex-1">
                       <FormLabel>
                         Brand<b className="text-red-500">*</b>
+                        Brand
                       </FormLabel>
                       <FormControl>
                         <Select
@@ -429,7 +430,7 @@ export const CreateProductForm: React.FC = () => {
                     </FormItem>
                   </div>
                 )}
-              />
+              /> */}
               <FormField
                 control={form.control}
                 name="categoryRef"

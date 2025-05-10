@@ -171,63 +171,66 @@ export const ProductDetailsSheet: React.FC<Props> = ({ product }) => {
   // });
 
   // ✅ Step 1: Top-level এ useForm call করুন
-const form = useForm<z.infer<typeof productFormSchema>>({
-  resolver: zodResolver(productFormSchema),
-  defaultValues: {
-    name: "",
-    description: "",
-    gender: "",
-    discountType: "",
-    discount: "",
-    freeShipping: "",
-    brandRef: "",
-    categoryRef: "",
-    subCategoryRef: "",
-    childCategoryRef: "",
-    inventoryType: "",
-    images: [],
-    thumbnailImage: [],
-    backViewImage: [],
-    sizeChartImage: [],
-    inventories: [{ quantity: "" }],
-  },
-});
-
-// ✅ Step 2: Product আসলে form reset করুন
-useEffect(() => {
-  if (product) {
-    form.reset({
-      name: product.name,
-      description: product.description,
-      gender: product.gender,
-      discountType: product.discountType || "",
-      discount: String(product.discount) || "",
-      freeShipping: String(product.freeShipping),
-      brandRef: product.brandRef?._id,
-      categoryRef: product.categoryRef?._id,
-      subCategoryRef: product.subCategoryRef?._id,
-      childCategoryRef: product.childCategoryRef?._id,
-      inventoryType: product.inventoryType,
+  const form = useForm<z.infer<typeof productFormSchema>>({
+    resolver: zodResolver(productFormSchema),
+    defaultValues: {
+      name: "",
+      description: "",
+      gender: "",
+      discountType: "",
+      discount: "",
+      freeShipping: "",
+      // brandRef: "",
+      categoryRef: "",
+      subCategoryRef: "",
+      childCategoryRef: "",
+      inventoryType: "",
       images: [],
       thumbnailImage: [],
       backViewImage: [],
       sizeChartImage: [],
-      inventories: product.inventoryRef?.length
-        ? product.inventoryRef.map((item: any) => ({
-            quantity: String(item.quantity),
-            ...(item._id && { id: item._id || '' }),
-            ...(item.color && { color: item.color }),
-            ...(item.name && { colorName: upperFirst(item.name) }),
-            ...(item.level && { size: upperCase(item.level) }),
-            ...(item.price && { price: upperCase(item.price) }),
-            ...(item.mrpPrice && { mrpPrice: upperCase(item.mrpPrice) }),
-          }))
-        : [{ quantity: product.mainInventory }],
-    });
-  }
-}, [product]);
+      inventories: [{ quantity: "" }],
+    },
+  });
 
-  console.log("form values from product details 55555555555555555555555", form.getValues());
+  // ✅ Step 2: Product আসলে form reset করুন
+  useEffect(() => {
+    if (product) {
+      form.reset({
+        name: product.name,
+        description: product.description,
+        gender: product.gender,
+        discountType: product.discountType || "",
+        discount: String(product.discount) || "",
+        freeShipping: String(product.freeShipping),
+        // brandRef: product.brandRef?._id,
+        categoryRef: product.categoryRef?._id,
+        subCategoryRef: product.subCategoryRef?._id,
+        childCategoryRef: product.childCategoryRef?._id,
+        inventoryType: product.inventoryType,
+        images: [],
+        thumbnailImage: [],
+        backViewImage: [],
+        sizeChartImage: [],
+        inventories: product.inventoryRef?.length
+          ? product.inventoryRef.map((item: any) => ({
+              quantity: String(item.quantity),
+              ...(item._id && { id: item._id || "" }),
+              ...(item.color && { color: item.color }),
+              ...(item.name && { colorName: upperFirst(item.name) }),
+              ...(item.level && { size: upperCase(item.level) }),
+              ...(item.price && { price: upperCase(item.price) }),
+              ...(item.mrpPrice && { mrpPrice: upperCase(item.mrpPrice) }),
+            }))
+          : [{ quantity: product.mainInventory }],
+      });
+    }
+  }, [product]);
+
+  console.log(
+    "form values from product details 55555555555555555555555",
+    form.getValues()
+  );
 
   const selectedCategoryId = form.watch("categoryRef");
   const selectedSubCategoryId = form.watch("subCategoryRef");
@@ -241,13 +244,13 @@ useEffect(() => {
   });
 
   const getDefaultInventory = () => {
-    const base = { id:"", quantity: "", mrpPrice: "" };
+    const base = { id: "", quantity: "", mrpPrice: "" };
     if (selectedInventoryType === "colorInventory")
-      return { ...base, id:"", color: "#1677ff", colorName: "" };
+      return { ...base, id: "", color: "#1677ff", colorName: "" };
     if (selectedInventoryType === "levelInventory")
-      return { ...base,id:"", size: "" };
+      return { ...base, id: "", size: "" };
     if (selectedInventoryType === "colorLevelInventory")
-      return { ...base,id:"", color: "#1677ff", colorName: "", size: "" };
+      return { ...base, id: "", color: "#1677ff", colorName: "", size: "" };
     return base;
   };
 
@@ -372,7 +375,7 @@ useEffect(() => {
   const onSubmitUpdate = async (values: z.infer<typeof productFormSchema>) => {
     setUpdating(true);
     const data = makeFormData(values);
-    console.log('data---', data)
+    console.log("data---", data);
     try {
       await updateFormAction(String(product._id), data);
       toast({
@@ -552,7 +555,7 @@ useEffect(() => {
                     </FormItem>
                   )}
                 />
-                                <FormField
+                {/* <FormField
                   control={form.control}
                   name="gender"
                   render={({ field }) => (
@@ -582,8 +585,8 @@ useEffect(() => {
                       </FormItem>
                     </div>
                   )}
-                />
-                <FormField
+                /> */}
+                {/* <FormField
                   control={form.control}
                   name="brandRef"
                   render={({ field }) => (
@@ -591,6 +594,7 @@ useEffect(() => {
                       <FormItem className="flex-1">
                         <FormLabel>
                           Brand<b className="text-red-500">*</b>
+                          Brand
                         </FormLabel>
                         <FormControl>
                           <Select
@@ -618,7 +622,7 @@ useEffect(() => {
                       </FormItem>
                     </div>
                   )}
-                />
+                /> */}
                 <FormField
                   control={form.control}
                   name="categoryRef"
@@ -770,34 +774,40 @@ useEffect(() => {
                     {(selectedInventoryType === "colorInventory" ||
                       selectedInventoryType === "colorLevelInventory") && (
                       <Controller
-  control={control}
-  name={`inventories.${index}.color`}
-  render={({ field }) => {
-    const [colorPickerOpen, setColorPickerOpen] = React.useState(false);
-    return (
-      <FormItem className="flex flex-col">
-        <FormLabel>Color</FormLabel>
-        <FormControl>
-          <ColorPicker
-            value={field.value || "#1677ff"}
-            showText
-            allowClear
-            open={colorPickerOpen}
-            onOpenChange={setColorPickerOpen}
-            getPopupContainer={(trigger) => trigger.parentNode as HTMLElement || document.body} // Prevents portal jumpiness
-            onChange={(color) => field.onChange(color.toHexString())}
-          />
-        </FormControl>
-        <FormDescription className="text-red-400 text-xs min-h-4">
-          {
-            formState.errors?.inventories?.[index]?.color?.message
-          }
-        </FormDescription>
-      </FormItem>
-    );
-  }}
-/>
-
+                        control={control}
+                        name={`inventories.${index}.color`}
+                        render={({ field }) => {
+                          const [colorPickerOpen, setColorPickerOpen] =
+                            React.useState(false);
+                          return (
+                            <FormItem className="flex flex-col">
+                              <FormLabel>Color</FormLabel>
+                              <FormControl>
+                                <ColorPicker
+                                  value={field.value || "#1677ff"}
+                                  showText
+                                  allowClear
+                                  open={colorPickerOpen}
+                                  onOpenChange={setColorPickerOpen}
+                                  getPopupContainer={(trigger) =>
+                                    (trigger.parentNode as HTMLElement) ||
+                                    document.body
+                                  } // Prevents portal jumpiness
+                                  onChange={(color) =>
+                                    field.onChange(color.toHexString())
+                                  }
+                                />
+                              </FormControl>
+                              <FormDescription className="text-red-400 text-xs min-h-4">
+                                {
+                                  formState.errors?.inventories?.[index]?.color
+                                    ?.message
+                                }
+                              </FormDescription>
+                            </FormItem>
+                          );
+                        }}
+                      />
                     )}
 
                     {(selectedInventoryType === "colorInventory" ||
@@ -840,25 +850,25 @@ useEffect(() => {
 
                     {selectedInventoryType !== "" && (
                       <>
-                      <FormItem>
-                        <FormLabel>
-                          Quantity <b className="text-red-500">*</b>
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Enter quantity"
-                            {...register(`inventories.${index}.quantity`)}
-                          />
-                        </FormControl>
-                        <FormDescription className="text-red-400 text-xs min-h-4">
-                          {
-                            formState.errors?.inventories?.[index]?.quantity
-                              ?.message
-                          }
-                        </FormDescription>
-                      </FormItem>
-                      
-                      {/* <FormLabel>
+                        <FormItem>
+                          <FormLabel>
+                            Quantity <b className="text-red-500">*</b>
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter quantity"
+                              {...register(`inventories.${index}.quantity`)}
+                            />
+                          </FormControl>
+                          <FormDescription className="text-red-400 text-xs min-h-4">
+                            {
+                              formState.errors?.inventories?.[index]?.quantity
+                                ?.message
+                            }
+                          </FormDescription>
+                        </FormItem>
+
+                        {/* <FormLabel>
                         MRP (Maximum Retail Price){" "}
                         <b className="text-red-500">*</b>
                       </FormLabel>
@@ -869,26 +879,25 @@ useEffect(() => {
                         {form.formState.errors.mrpPrice?.message}
                       </FormDescription> */}
 
-
-                      <FormItem>
-                      <FormLabel>
-                        MRP (Maximum Retail Price){" "}
-                        <b className="text-red-500">*</b>
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Enter mrpPrice"
-                          {...register(`inventories.${index}.mrpPrice`)}
-                        />
-                      </FormControl>
-                      <FormDescription className="text-red-400 text-xs min-h-4">
-                        {
-                          formState.errors?.inventories?.[index]?.mrpPrice
-                            ?.message
-                        }
-                      </FormDescription>
-                    </FormItem>
-                    </>
+                        <FormItem>
+                          <FormLabel>
+                            MRP (Maximum Retail Price){" "}
+                            <b className="text-red-500">*</b>
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter mrpPrice"
+                              {...register(`inventories.${index}.mrpPrice`)}
+                            />
+                          </FormControl>
+                          <FormDescription className="text-red-400 text-xs min-h-4">
+                            {
+                              formState.errors?.inventories?.[index]?.mrpPrice
+                                ?.message
+                            }
+                          </FormDescription>
+                        </FormItem>
+                      </>
                     )}
 
                     {fields.length > 1 && (

@@ -11,8 +11,8 @@ const inventoryRepository = require("../inventory/inventory.repository.js");
 class OrderRepository extends BaseRepository {
   #model;
   #inventoryRepository = inventoryRepository;
-  constructor( inventoryRepository, model) {
-    super( model);
+  constructor(inventoryRepository, model) {
+    super(model);
     this.#model = model;
     this.#inventoryRepository = inventoryRepository;
   }
@@ -169,13 +169,13 @@ class OrderRepository extends BaseRepository {
       ],
       { session }
     );
-
-    console.log("cart items from order repo++++++++++++++++", newOrder );
-    console.log("cart items from order repo++++++++++++++++", products );
+    await CartSchema.deleteMany(query, { session });
+    console.log("cart items from order repo++++++++++++++++", newOrder);
+    console.log("cart items from order repo++++++++++++++++", products);
 
     // Clear the cart after order is placed
     // await CartSchema.deleteMany(query, { session });
-        // orderData?.products loop than call this.#inventoryRepository.updateInventoryOnOrderPlace .
+    // orderData?.products loop than call this.#inventoryRepository.updateInventoryOnOrderPlace .
     for (const product of products) {
       await this.#inventoryRepository.updateInventoryOnOrderPlace(
         product?.inventoryRef?._id,

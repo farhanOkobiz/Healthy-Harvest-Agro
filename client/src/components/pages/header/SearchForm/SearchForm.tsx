@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import { apiBaseUrl } from "@/config/config";
@@ -14,18 +16,17 @@ interface ResponsiveSearchFormProps {
 
 const SearchForm: React.FC<ResponsiveSearchFormProps> = ({ onClose }) => {
   const [query, setQuery] = useState("");
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false); // <-- loader state
+  const [products, setProducts] = useState<TProduct[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchSearchResults = async () => {
-      if (!query.trim()) {
-        setProducts([]);
-        setLoading(false);
-        return;
-      }
+    if (!query.trim()) {
+      setProducts([]);
+      return;
+    }
 
-      setLoading(true);
+    setLoading(true);
+    const delayDebounce = setTimeout(async () => {
       try {
         const { data } = await getSearchProducts({ search: query });
         setProducts(data);
@@ -34,10 +35,8 @@ const SearchForm: React.FC<ResponsiveSearchFormProps> = ({ onClose }) => {
       } finally {
         setLoading(false);
       }
-    };
+    }, 300); // debounce delay
 
-    const delayDebounce = setTimeout(() => {}, 100);
-    fetchSearchResults();
     return () => clearTimeout(delayDebounce);
   }, [query]);
 
@@ -58,42 +57,37 @@ const SearchForm: React.FC<ResponsiveSearchFormProps> = ({ onClose }) => {
           <GoSearch className="text-xl text-[#262626]/50 font-semibold" />
         </button>
       </form>
-      {products?.length > 0 && (
+
+      {query.trim() && (
         <div className="w-full xl:w-[65%] lg:w-[50%] absolute lg:top-[80px] top-[160px] flex flex-col gap-2 bg-[#fff] rounded p-8 border border-[#262626]/10 shadow">
           {loading ? (
-            <p className="text-center text-gray-500">Loading...</p> // <-- loader
-          ) : products?.length > 0 ? (
-            products?.slice(0, 12).map((product: TProduct) => (
+            <p className="text-center text-gray-500">Loading...</p>
+          ) : products.length > 0 ? (
+            products.slice(0, 12).map((product) => (
               <div key={product._id} onClick={() => setQuery("")}>
                 <Link
                   href={`/product/${product.slug}`}
                   onClick={onClose}
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  <div>
-                    {product?.thumbnailImage && (
-                      <Image
-                        src={apiBaseUrl + product?.thumbnailImage}
-                        alt="image"
-                        width={30}
-                        height={30}
-                        className="rounded"
-                      />
-                    )}
-                  </div>
-                  <div>
-                    <p className="text-base capitalize hover:underline duration-300">
-                      {product.name}
-                    </p>
-                  </div>
+                  {product.thumbnailImage && (
+                    <Image
+                      src={apiBaseUrl + product.thumbnailImage}
+                      alt="image"
+                      width={30}
+                      height={30}
+                      className="rounded"
+                    />
+                  )}
+                  <p className="text-base capitalize hover:underline duration-300">
+                    {product.name}
+                  </p>
                 </Link>
               </div>
             ))
-          ) : query.trim() ? (
-            <p className="text-center text-gray-500 col-span-full">
-              No products found.
-            </p>
-          ) : null}
+          ) : (
+            <p className="text-center text-gray-500">No products found.</p>
+          )}
         </div>
       )}
     </div>

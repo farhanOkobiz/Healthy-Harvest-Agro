@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import logo from "@/assets/logo/Noha.png";
+import logo from "@/assets/logo/agro.png";
 import SearchForm from "../SearchForm/SearchForm";
 import { menuList } from "@/utilits/menuList";
 import Link from "next/link";
@@ -127,7 +127,7 @@ const NavBar: React.FC<NavBarProps> = ({ userCartProducts }) => {
                   <Link href="/">
                     <Image
                       src={logo || null}
-                      alt="NoHasan | Best E-commerce platform in BD"
+                      alt="Healthy Harvest | Best E-commerce platform in BD"
                       width={100}
                       height={80}
                       className="w-full h-full"
@@ -192,7 +192,7 @@ const NavBar: React.FC<NavBarProps> = ({ userCartProducts }) => {
                 <div className="px-2 py-2 border rounded relative">
                   <BsCart2 />
 
-                  <p className="top-[-12px] right-[-8px] absolute w-[20px] h-[20px] text-sm text-[#fff] text-center rounded-full bg-[#D4A373]">
+                  <p className="top-[-12px] right-[-8px] absolute w-[20px] h-[20px] text-sm text-[#fff] text-center rounded-full bg-[#F7B50C]">
                     {userCartProducts?.cartDetails?.length || 0}
                   </p>
                 </div>
@@ -240,7 +240,7 @@ const NavBar: React.FC<NavBarProps> = ({ userCartProducts }) => {
                 <Link href="/">
                   <Image
                     src={logo || null}
-                    alt="NoHasan | Best E-commerce platform in BD"
+                    alt="Healthy Harvest | Best E-commerce platform in BD"
                     width={100}
                     height={80}
                     className="w-full h-full"
@@ -261,7 +261,7 @@ const NavBar: React.FC<NavBarProps> = ({ userCartProducts }) => {
                   <div className="px-2 py-2 border rounded relative">
                     <BsCart2 />
 
-                    <p className="top-[-12px] right-[-8px] absolute w-[20px] h-[20px] text-sm text-[#fff] text-center rounded-full bg-[#D4A373]">
+                    <p className="top-[-12px] right-[-8px] absolute w-[20px] h-[20px] text-sm text-[#fff] text-center rounded-full bg-[#F7B50C]">
                       {userCartProducts?.cartDetails?.length || 0}
                     </p>
                   </div>

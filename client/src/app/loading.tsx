@@ -2,14 +2,14 @@
 
 import Image from "next/image";
 import React from "react";
-import loader from "@/assets/logo/Noha.png";
+import loader from "@/assets/logo/agro.png";
 
 const Loading = () => {
   return (
     <div className="w-full h-screen bg-[#ffff] flex justify-center items-center">
       <div className="relative w-[120px] h-[120px]">
         {/* Circular spinner */}
-        <div className="absolute inset-0 rounded-full border-4 border-t-[#D4A373] border-r-transparent border-b-transparent border-l-transparent animate-spin"></div>
+        <div className="absolute inset-0 rounded-full border-4 border-t-[#F7B50C] border-r-transparent border-b-transparent border-l-transparent animate-spin"></div>
 
         {/* Center image */}
         <Image

@@ -99,17 +99,17 @@ const ForgetPassword = () => {
             </div>
             <button
               type="submit"
-              className="bg-[#D4A373] hover:bg-[#CCD5AE] duration-300 text-white font-bold py-2 rounded-md cursor-pointer"
+              className="bg-[#F7B50C] hover:bg-[#b4d150] duration-300 text-white font-bold py-2 rounded-md cursor-pointer"
             >
               Send OTP!
             </button>
           </form>
           <div className="flex justify-center gap-2 mt-4 text-md">
-            <Link href="/login" className="text-[#D4A373] hover:underline">
+            <Link href="/login" className="text-[#F7B50C] hover:underline">
               Login
             </Link>{" "}
             |
-            <Link href="/register" className="text-[#D4A373] hover:underline">
+            <Link href="/register" className="text-[#F7B50C] hover:underline">
               Registration
             </Link>
           </div>

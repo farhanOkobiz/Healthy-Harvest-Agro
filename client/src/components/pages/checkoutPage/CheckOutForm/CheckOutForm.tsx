@@ -281,7 +281,7 @@ const CheckOutForm: React.FC<Props> = ({
         {/*BreakDown */}
         <div className="text-center rounded lg:py-8 py-4 lg:my-8 my-4 bg-gray-100">
           <p className="">Your total payable amount is</p>
-          <h4 className="font-extrabold text-2xl text-[#D4A373] pt-2">
+          <h4 className="font-extrabold text-2xl text-[#F7B50C] pt-2">
             ৳{payableAmount}
           </h4>
           <p className="font-bold text-xl pb-2">BreakDown</p>
@@ -384,7 +384,7 @@ const CheckOutForm: React.FC<Props> = ({
           </div>
           <div
             onClick={() => handleAddCoupon()}
-            className="bg-[#D4A373] py-2 px-10 text-white 2xl:w-[30%] xl:w-[40%] lg:w-[50%] rounded cursor-pointer text-center w-full"
+            className="bg-[#F7B50C] py-2 px-10 text-white 2xl:w-[30%] xl:w-[40%] lg:w-[50%] rounded cursor-pointer text-center w-full"
           >
             Add Coupon
           </div>
@@ -401,24 +401,24 @@ const CheckOutForm: React.FC<Props> = ({
             I agree to{" "}
             <Link
               href="/terms-condition"
-              className="text-[#D4A373] hover:underline hover:text-[#CCD5AE]"
+              className="text-[#F7B50C] hover:underline hover:text-[#b4d150]"
             >
               Terms & Conditions,
             </Link>{" "}
             <Link
               href="/returnPolicy"
-              className="text-[#D4A373] hover:underline hover:text-[#CCD5AE]"
+              className="text-[#F7B50C] hover:underline hover:text-[#b4d150]"
             >
               Refund Policy
             </Link>{" "}
             and{" "}
             <Link
               href="/privacyPolicy"
-              className="text-[#D4A373] hover:underline hover:text-[#CCD5AE]"
+              className="text-[#F7B50C] hover:underline hover:text-[#b4d150]"
             >
               Privacy Policy{" "}
             </Link>{" "}
-            of NoHasan.
+            of Healthy Harvest.
           </label>
         </div>
         {errors.terms && (
@@ -434,8 +434,8 @@ const CheckOutForm: React.FC<Props> = ({
             ${isSubmitting ? " cursor-not-allowed" : ""}
             ${
               startCar === true
-                ? "bg-[#ffffff] border border-[#D4A373] "
-                : "bg-[#D4A373] hover:bg-[#CCD5AE] duration-300 border border-[#D4A373]/30"
+                ? "bg-[#ffffff] border border-[#F7B50C] "
+                : "bg-[#F7B50C] hover:bg-[#b4d150] duration-300 border border-[#F7B50C]/30"
             }
             `}
         >

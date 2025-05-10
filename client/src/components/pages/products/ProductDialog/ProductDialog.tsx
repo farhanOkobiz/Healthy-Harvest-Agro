@@ -202,7 +202,7 @@
 //     <Dialog open={open} onOpenChange={setOpen}>
 //       <DialogTrigger asChild>
 //         <motion.button
-//           className="flex items-center justify-center py-2 rounded text-[#fff] text-sm font-semibold mt-2 bg-[#D4A373] group-hover:bg-[#CCD5AE] w-full gap-2 duration-300 cursor-pointer"
+//           className="flex items-center justify-center py-2 rounded text-[#fff] text-sm font-semibold mt-2 bg-[#F7B50C] group-hover:bg-[#b4d150] w-full gap-2 duration-300 cursor-pointer"
 //           onHoverStart={() => setIsHovered(true)}
 //           onHoverEnd={() => setIsHovered(false)}
 //           transition={{ type: "spring", stiffness: 300 }}
@@ -377,7 +377,7 @@
 //                 className={`
 //                 w-[50%]   duration-300 text-center flex items-center justify-center rounded
 
-//                ${inventoryRef ? (inventoryRef[0].availableQuantity + cartProducts[0]?.inventory?.availableQuantity) < count ? "bg-[#c92525]/50 cursor-not-allowed" : "cursor-pointer bg-[#D4A373] hover:bg-[#CCD5AE]": ''}
+//                ${inventoryRef ? (inventoryRef[0].availableQuantity + cartProducts[0]?.inventory?.availableQuantity) < count ? "bg-[#c92525]/50 cursor-not-allowed" : "cursor-pointer bg-[#F7B50C] hover:bg-[#b4d150]": ''}
 //                `
 //             }
 //               >
@@ -396,7 +396,7 @@
 //           <h2 className="text-base text-[#262626]/70 font-semibold">
 //             Unit Price
 //           </h2>
-//           <p className="text-[#D4A373] text-xl font-semibold">
+//           <p className="text-[#F7B50C] text-xl font-semibold">
 //             <span className="text-xl">৳</span>{" "}
 //             <span>{Number(inventoryRef?.[0]?.price).toFixed(2)}</span>
 //           </p>
@@ -405,7 +405,7 @@
 //           <h2 className="text-base text-[#262626]/70 font-semibold">
 //             Unit Price
 //           </h2>
-//           <p className="text-[#D4A373] text-xl font-semibold">
+//           <p className="text-[#F7B50C] text-xl font-semibold">
 //             <span className="text-xl">৳</span>{" "}
 //             <span>
 //               {(() => {
@@ -600,7 +600,7 @@ const ProductDialog: React.FC<Product> = ({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <motion.button
-          className="flex items-center justify-center py-2 rounded text-[#fff] text-sm font-semibold mt-2 bg-[#D4A373] group-hover:bg-[#CCD5AE] w-full gap-2 duration-300 cursor-pointer"
+          className="flex items-center justify-center py-2 rounded text-[#fff] text-sm font-semibold mt-2 bg-[#F7B50C] group-hover:bg-[#b4d150] w-full gap-2 duration-300 cursor-pointer"
           onHoverStart={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
           transition={{ type: "spring", stiffness: 300 }}
@@ -771,7 +771,7 @@ const ProductDialog: React.FC<Product> = ({
               </div>
               <div
                 onClick={handleAddToCart}
-                className="w-[50%] bg-[#D4A373] border-transparent hover:bg-[#CCD5AE] duration-300 text-center flex items-center justify-center rounded cursor-pointer"
+                className="w-[50%] bg-[#F7B50C] border-transparent hover:bg-[#b4d150] duration-300 text-center flex items-center justify-center rounded cursor-pointer"
               >
                 <button className=" focus:outline-none w-full border-transparent flex items-center justify-center gap-1 px-4 py-3 font-semibold text-[12px] cursor-pointer rounded text-[#fff] ">
                   <span>
@@ -787,7 +787,7 @@ const ProductDialog: React.FC<Product> = ({
           <h2 className="text-base text-[#262626]/70 font-semibold">
             Unit Price
           </h2>
-          <p className="text-[#D4A373] text-xl font-semibold">
+          <p className="text-[#F7B50C] text-xl font-semibold">
             <span className="text-xl">৳</span>{" "}
             <span>{Number(inventoryRef?.[0]?.price).toFixed(2)}</span>
           </p>
@@ -796,7 +796,7 @@ const ProductDialog: React.FC<Product> = ({
           <h2 className="text-base text-[#262626]/70 font-semibold">
             Unit Price
           </h2>
-          <p className="text-[#D4A373] text-xl font-semibold">
+          <p className="text-[#F7B50C] text-xl font-semibold">
             <span className="text-xl">৳</span>{" "}
             <span>
               {(() => {

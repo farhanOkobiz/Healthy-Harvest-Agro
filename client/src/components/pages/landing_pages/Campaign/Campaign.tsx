@@ -97,7 +97,7 @@ const Campaign: React.FC<Props> = ({ campaign }) => {
 
           <div className="my-8">
             <Link href="/shop">
-              <button className="px-8 py-3 bg-[#D4A373] text-[#fff] rounded cursor-pointer border border-[#ffff]/0 hover:border-[#fff] duration-300">
+              <button className="px-8 py-3 bg-[#F7B50C] text-[#fff] rounded cursor-pointer border border-[#ffff]/0 hover:border-[#fff] duration-300">
                 Shop Now
               </button>
             </Link>
@@ -109,7 +109,7 @@ const Campaign: React.FC<Props> = ({ campaign }) => {
             alt="Countdown Timer"
             width={800}
             height={800}
-            className="w-full h-full object-cover md:rounded-r md:rounded-b-none rounded-b opacity-65"
+            className="w-full h-full object-cover md:rounded-r md:rounded-b-none rounded-b"
           />
         </div>
       </div>

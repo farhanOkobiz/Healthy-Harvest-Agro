@@ -636,15 +636,20 @@ class ProductRepository extends BaseRepository {
       { $unwind: "$product" },
       {
         $lookup: {
-          from: "inventories",               // name of the inventory collection
+          from: "inventories", // name of the inventory collection
           localField: "product.inventoryRef", // assumes it's an array of ObjectIds
           foreignField: "_id",
           as: "product.inventoryRef",
         },
       },
-    
+
       // ✅ Unwind inventoryRef if you want to flatten it (optional)
-      { $unwind: { path: "$product.inventoryRef", preserveNullAndEmptyArrays: true } },
+      {
+        $unwind: {
+          path: "$product.inventoryRef",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
       {
         $project: {
           _id: "$product._id",
@@ -655,46 +660,47 @@ class ProductRepository extends BaseRepository {
           mrpPrice: "$product.mrpPrice",
           slug: "$product.slug",
           totalSold: 1,
-          inventoryRef: "$product.inventoryRef", 
-          inventoryType: "$product.inventoryType", 
+          inventoryRef: "$product.inventoryRef",
+          inventoryType: "$product.inventoryType",
         },
       },
     ]);
-console.log("bestSellingProducts",bestSellingProducts)
-    if (bestSellingProducts.length < 10) {
-      const missingCount = 10 - bestSellingProducts.length;
-    
-      const fallbackProducts = await ProductSchema.find()
-        .limit(missingCount) // fetch only missing products
-        .select("_id name thumbnailImage backViewImage price mrpPrice slug inventoryType")
-        .populate("inventoryRef"); // populate inventoryRef if needed
-    
-      const formattedFallbackProducts = fallbackProducts.map((product) => ({
-        _id: product._id,
-        name: product.name,
-        thumbnailImage: product.thumbnailImage,
-        backViewImage: product.backViewImage,
-        price: product.price,
-        mrpPrice: product.mrpPrice,
-        slug: product.slug,
-        totalSold: 0, // No sales info
-        inventoryRef: product.inventoryRef,
-        inventoryType: product.inventoryType
-      }));
-      // console.log("formattedFallbackProducts", formattedFallbackProducts)
-    
-      // Push fallback products into bestSellingProducts
-      bestSellingProducts = [...bestSellingProducts, ...formattedFallbackProducts];
-      // console.log("-----------------", bestSellingProducts)
-    }
+    console.log("bestSellingProducts", bestSellingProducts);
+    // if (bestSellingProducts.length < 10) {
+    //   const missingCount = 10 - bestSellingProducts.length;
+
+    //   const fallbackProducts = await ProductSchema.find()
+    //     .limit(missingCount) // fetch only missing products
+    //     .select("_id name thumbnailImage backViewImage price mrpPrice slug inventoryType")
+    //     .populate("inventoryRef"); // populate inventoryRef if needed
+
+    //   const formattedFallbackProducts = fallbackProducts.map((product) => ({
+    //     _id: product._id,
+    //     name: product.name,
+    //     thumbnailImage: product.thumbnailImage,
+    //     backViewImage: product.backViewImage,
+    //     price: product.price,
+    //     mrpPrice: product.mrpPrice,
+    //     slug: product.slug,
+    //     totalSold: 0, // No sales info
+    //     inventoryRef: product.inventoryRef,
+    //     inventoryType: product.inventoryType
+    //   }));
+    //   // console.log("formattedFallbackProducts", formattedFallbackProducts)
+
+    //   // Push fallback products into bestSellingProducts
+    //   bestSellingProducts = [...bestSellingProducts, ...formattedFallbackProducts];
+    //   // console.log("-----------------", bestSellingProducts)
+    // }
     return { products: bestSellingProducts };
   }
 
   async getAllDiscountedProduct(payload) {
     return await ProductSchema.find({
       isDiscounted: true,
-    }).sort({ createdAt: -1 })
-    .populate("inventoryRef");
+    })
+      .sort({ createdAt: -1 })
+      .populate("inventoryRef");
   }
 }
 

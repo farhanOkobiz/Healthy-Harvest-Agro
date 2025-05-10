@@ -15,13 +15,13 @@ const orderPolicy = async () => {
       <div className="Container py-10 ">
         <div className="">
           <div className="p-8">
-            <h1 className="text-3xl font-bold text-[#D4A373] mb-4">
-              Delivery Options
+            <h1 className="text-3xl font-bold text-[#F7B50C] mb-4">
+              Healthy Harvest Agro - Delivery & Order Policy
             </h1>
 
             <div className="space-y-8">
               <section>
-                <h2 className="text-xl font-semibold text-[#D4A373] mb-2">
+                <h2 className="text-xl font-semibold text-[#F7B50C] mb-2">
                   Regular Delivery
                 </h2>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
@@ -30,7 +30,7 @@ const orderPolicy = async () => {
                   <li>Dhaka Suburb</li>
                   <li>Outside Dhaka</li>
                   <li>
-                    <strong> Order Cut-Off Time:</strong> 1:30 PM (On working
+                    <strong>Order Cut-Off Time:</strong> 1:30 PM (On working
                     days, except Govt. holidays)
                   </li>
                   <ol>Delivery Fee:</ol>
@@ -41,7 +41,7 @@ const orderPolicy = async () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-[#D4A373] mb-2">
+                <h2 className="text-xl font-semibold text-[#F7B50C] mb-2">
                   Payment Methods:
                 </h2>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
@@ -54,7 +54,7 @@ const orderPolicy = async () => {
               <section>
                 <h2 className="mb-2">Delivery Time: 2 to 7 working days</h2>
 
-                <h2 className="text-xl font-semibold text-[#D4A373] mb-2">
+                <h2 className="text-xl font-semibold text-[#F7B50C] mb-2">
                   Express Delivery (Next Working Day)
                 </h2>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
@@ -69,7 +69,7 @@ const orderPolicy = async () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-[#D4A373] mb-2">
+                <h2 className="text-xl font-semibold text-[#F7B50C] mb-2">
                   Working Hours:
                 </h2>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
@@ -78,7 +78,7 @@ const orderPolicy = async () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-[#D4A373] mb-2">
+                <h2 className="text-xl font-semibold text-[#F7B50C] mb-2">
                   Additional Delivery Information
                 </h2>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
@@ -99,7 +99,7 @@ const orderPolicy = async () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-[#D4A373] mb-2">
+                <h2 className="text-xl font-semibold text-[#F7B50C] mb-2">
                   Exchange Policy
                 </h2>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
@@ -113,14 +113,13 @@ const orderPolicy = async () => {
                     or exchanges are allowed.
                   </li>
                   <li>
-                    Customer Service Contact: +880 1735 775 093 (Sunday –
-                    Thursday, 10:00 AM – 06:30 PM)
+                    Customer Service Contact: +880 1735 775 093 (Sunday – Thursday, 10:00 AM – 06:30 PM)
                   </li>
                   <li>
                     More Information: Visit{" "}
                     <Link
                       href="/returnPolicy"
-                      className="underline text-[#D4A373] cursor-pointer hover:text-[red] duration-300"
+                      className="underline text-[#F7B50C] cursor-pointer hover:text-[red] duration-300"
                     >
                       Return & Refund Policy
                     </Link>
@@ -129,7 +128,7 @@ const orderPolicy = async () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-[#D4A373] mb-2">
+                <h2 className="text-xl font-semibold text-[#F7B50C] mb-2">
                   Delivery Process
                 </h2>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
@@ -153,7 +152,7 @@ const orderPolicy = async () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-[#D4A373] mb-2">
+                <h2 className="text-xl font-semibold text-[#F7B50C] mb-2">
                   Secure Delivery Policies
                 </h2>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">

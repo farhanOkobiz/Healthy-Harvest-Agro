@@ -22,17 +22,19 @@ const CartSideBar: React.FC<Props> = ({ cartProducts }) => {
     setIsOpen((prev) => !prev);
   };
 
+  console.log("cartProducts", cartProducts);
+
   return (
     <>
       {/* Toggle Button */}
       <div className="fixed top-[30vh]  right-0 z-20">
         <div
-          className="bg-[#D4A373]  p-2 text-[#fff] rounded-l cursor-pointer"
+          className="bg-[#F7B50C]  p-2 text-[#fff] rounded-l cursor-pointer"
           onClick={menuClick}
         >
           <IoCart className="text-xl" />
         </div>
-        <p className="bg-[#D4A373] text-center mx-0 text-white w-[20px] h-[26px] p-1 text-sm mt-1 ml-2 rounded">
+        <p className="bg-[#F7B50C] text-center mx-0 text-white w-[20px] h-[26px] p-1 text-sm mt-1 ml-2 rounded">
           {cartProducts?.cartDetails?.length}
         </p>
       </div>
@@ -121,11 +123,11 @@ const CartSideBar: React.FC<Props> = ({ cartProducts }) => {
 
             <div className="fixed bottom-0 bg-[#fff] z-[999] w-full flex items-center">
               <div className="flex items-center flex-col 2xl:w-[160px]  xl:w-[140px] lg:w-[180px] md:w-[200px] w-[140px]">
-                <p className="font-semibold text-[12px]">cart total</p>
+                <p className="font-semibold text-[12px]">Cart Total</p>
                 <p>৳ {cartProducts?.totalPrice}</p>
               </div>
               <Link href="/checkout">
-                <div className="2xl:w-[160px] xl:w-[140px] lg:w-[180px] md:w-[200px] w-[140px]  bg-[#D4A373] py-2 flex items-center justify-center gap-2 text-[#fff] cursor-pointer">
+                <div className="2xl:w-[160px] xl:w-[140px] lg:w-[180px] md:w-[200px] w-[140px]  bg-[#F7B50C] py-2 flex items-center justify-center gap-2 text-[#fff] cursor-pointer">
                   <p>Checkout</p>
                   <p>
                     <IoIosArrowForward />

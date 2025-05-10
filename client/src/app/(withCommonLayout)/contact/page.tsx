@@ -26,10 +26,10 @@ const Contact = async () => {
               <div>Dhaka, Bangladesh</div>
             </div>
             <div className="mt-2">
-              <span className="font-bold">Hotline: </span> +8801735775093
+              <span className="font-bold">Hotline: </span> +8801717822619
             </div>
             <div className="mt-2">
-              <span className="font-bold">Email: </span> info@nohasan.com
+              <span className="font-bold">Email: </span> info@healthyHarvest.com
             </div>
           </div>
         </div>

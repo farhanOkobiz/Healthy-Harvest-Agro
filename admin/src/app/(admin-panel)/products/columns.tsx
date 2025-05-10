@@ -90,16 +90,16 @@ export const columns: ColumnDef<TProduct>[] = [
       );
     },
   },
-  {
-    header: "Barcode",
-    cell: ({ row }) => {
-      return (
-        <div className="w-[300px]">
-          <Barcode value={row?.original?._id} className="w-full" />
-        </div>
-      );
-    },
-  },
+  // {
+  //   header: "Barcode",
+  //   cell: ({ row }) => {
+  //     return (
+  //       <div className="w-[300px]">
+  //         <Barcode value={row?.original?._id} className="w-full" />
+  //       </div>
+  //     );
+  //   },
+  // },
   {
     header: "Name",
     size: 200,
@@ -231,28 +231,28 @@ export const columns: ColumnDef<TProduct>[] = [
       );
     },
   },
-  {
-    header: "Gender",
-    accessorKey: "gender",
-    // cell: ({ row }) => {
-    //   return (
-    //     <div>
-    //       <p>{upperFirst(row.original.categoryRef?.name)}</p>
-    //     </div>
-    //   );
-    // },
-  },
-  {
-    header: "Brand",
-    accessorKey: "brandRef",
-    cell: ({ row }) => {
-      return (
-        <div>
-          <p>{upperFirst(row.original.brandRef?.name) || "N/A" } </p>
-        </div>
-      );
-    },
-  },
+  // {
+  //   header: "Gender",
+  //   accessorKey: "gender",
+  //   // cell: ({ row }) => {
+  //   //   return (
+  //   //     <div>
+  //   //       <p>{upperFirst(row.original.categoryRef?.name)}</p>
+  //   //     </div>
+  //   //   );
+  //   // },
+  // },
+  // {
+  //   header: "Brand",
+  //   accessorKey: "brandRef",
+  //   cell: ({ row }) => {
+  //     return (
+  //       <div>
+  //         <p>{upperFirst(row.original.brandRef?.name) || "N/A" } </p>
+  //       </div>
+  //     );
+  //   },
+  // },
   {
     header: "Category",
     accessorKey: "categoryRef",

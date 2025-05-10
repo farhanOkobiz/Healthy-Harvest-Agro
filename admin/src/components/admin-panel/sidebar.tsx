@@ -12,7 +12,7 @@ import Image from "next/image";
 // import { getSetting } from "@/services/settings";
 import React from "react";
 import { fileUrlGenerator } from "@/utils/helpers";
-import logo from "@/assets/logo/main.png";
+import logo from "@/assets/logo/agro.png";
 
 export function Sidebar() {
   const sidebar = useStore(useSidebarToggle, (state) => state);
@@ -48,7 +48,7 @@ export function Sidebar() {
           >
             <span
               className={cn(
-                "font-bold uppercase text-lg whitespace-nowrap transition-[transform,opacity,display] ease-in-out duration-300 w-[100px] h-[100px] mt-8",
+                "font-bold uppercase text-lg whitespace-nowrap transition-[transform,opacity,display] ease-in-out duration-300 w-[60px] h-[60px] mt-8",
                 sidebar?.isOpen === false
                   ? "-translate-x-96 opacity-0 hidden"
                   : "translate-x-0 opacity-100"

@@ -32,17 +32,17 @@ const PrintInvoice = React.forwardRef<HTMLDivElement, PrintInvoiceProps>(
       >
         <div className="w-full flex flex-col justify-center items-center text-center py-2">
           <img
-            src="/logo/main.png"
+            src="/logo/agro.png"
             alt={BRAND_NAME}
             className="h-[1.5cm] object-cover"
           />
           <p className="mt-2">{BRAND_NAME}</p>
           {/* <p className="text-[10px]">Address</p> */}
           <div className="flex items-center justify-start text-[10px]">
-            <span>Hotline:</span> <span className="">+8801735775093</span>
+            <span>Hotline:</span> <span className="">+8801717822619</span>
           </div>
-          <p className=" text-[10px]">Email : support@nohasan.com</p>
-          <p className=" text-[10px]">Website : www.nohasan.com</p>
+          <p className=" text-[10px]">Email : support@HealthyHarvest.com</p>
+          <p className=" text-[10px]">Website : www.HealthyHarvest.com</p>
         </div>
 
         <div className="w-full border-b border-[#000000] py-2">

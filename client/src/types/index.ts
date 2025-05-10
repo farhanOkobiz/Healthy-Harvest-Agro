@@ -62,6 +62,33 @@ export type TShopSideBar = {
   subChildCategories: TChildCategory;
 };
 
+export type TPrice = {
+  minPrice: number;
+  maxPrice: number;
+};
+
+export type TBrands = {
+  _id: string;
+  name: string;
+  image: string;
+  slug: string;
+  status: boolean;
+  createdAt: string; // ISO date string
+  updatedAt: string; // ISO date string
+  __v: number;
+};
+
+export type TGender = "unisex" | "men" | "women";
+export type TInventoryItem = {
+  price: string;
+  mrpPrice?: number;
+};
+export type TInventory = {
+  price: string;
+  mrpPrice?: number;
+  level: string;
+};
+
 export type TInventoryRef = {
   _id: string;
   quantity: number;
@@ -79,32 +106,6 @@ export type TInventoryRef = {
   updatedAt: string;
   __v: number;
   productRef: string;
-};
-
-export type TPrice = {
-  minPrice: number;
-  maxPrice: number;
-};
-
-export type TBrands = {
-  _id: string;
-  name: string;
-  image: string;
-  slug: string;
-  status: boolean;
-  createdAt: string; // ISO date string
-  updatedAt: string; // ISO date string
-  __v: number;
-};
-
-export type TInventory = {
-  price: string;
-  level: string;
-};
-
-export type TGender = "unisex" | "men" | "women";
-export type TInventoryItem = {
-  price: string;
 };
 export type TProduct = {
   brandRef?: TBrands;
@@ -144,7 +145,7 @@ export type TProduct = {
     | "levelInventory"
     | "colorLevelInventory"
     | string;
-  inventoryRef: TInventoryRef[];
+  inventoryRef: TInventoryRef[] | TInventoryRef;
   categoryRef: TCategory;
   subCategoryRef: TSubCategory;
   childCategoryRef: TChildCategory;
@@ -306,3 +307,4 @@ export type TBrandResponse = {
   message: string;
   data: TBrand[];
 };
+

@@ -21,6 +21,7 @@ import {
   FlameKindling,
   Images,
   ShoppingBasket,
+  Notebook,
 } from "lucide-react";
 
 export function getMenuList(pathname: string): Group[] {
@@ -121,7 +122,7 @@ export function getMenuList(pathname: string): Group[] {
           href: "/contact",
           label: "Contacts",
           active: pathname.includes("/contact"),
-          icon: Images,
+          icon: Notebook,
           submenus: [],
         },
       ],

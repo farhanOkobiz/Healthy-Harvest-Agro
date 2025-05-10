@@ -1,9 +1,9 @@
 "use client";
 
 import {
-  TBrand,
+  // TBrand,
   TChildCategory,
-  TGender,
+  // TGender,
   TShopSideBar,
   TShopSideBarResponsive,
   TSubCategory,
@@ -35,8 +35,8 @@ const ShopProductsCategories: React.FC<ShopProductsCategoriesProps> = ({
   const [selectedChildCategories, setSelectedChildCategories] = useState<
     string[]
   >([]);
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-  const [selectedGenders, setSelectedGenders] = useState<string[]>([]);
+  // const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  // const [selectedGenders, setSelectedGenders] = useState<string[]>([]);
 
   // const MIN = products?.priceRange?.minPrice || 0;
   const MIN = products?.priceRange?.minPrice || 0;
@@ -58,8 +58,8 @@ const ShopProductsCategories: React.FC<ShopProductsCategoriesProps> = ({
     setSelectedCategories(cats);
     setSelectedSubCategories(subCats);
     setSelectedChildCategories(childCats);
-    setSelectedBrands(brands);
-    setSelectedGenders(genders);
+    // setSelectedBrands(brands);
+    // setSelectedGenders(genders);
 
     setValues([minPrice, maxPrice]);
   }, [searchParams, MIN, MAX]);
@@ -118,7 +118,7 @@ const ShopProductsCategories: React.FC<ShopProductsCategoriesProps> = ({
   return (
     <div className="px-4 pt-2 sticky top-0 h-screen overflow-y-scroll custom-scroll flex flex-col gap-4 pb-12">
       <div>
-        <div className="space-y-2 border border-[#D4A373] rounded px-3 py-4 h-[220px]">
+        <div className="space-y-2 border border-[#F7B50C] rounded px-3 py-4 h-[220px]">
           <h2 className="pb-2 text-base font-semibold uppercase">
             Price range
           </h2>
@@ -179,11 +179,11 @@ const ShopProductsCategories: React.FC<ShopProductsCategoriesProps> = ({
                     ...props.style,
                     height: "6px",
                     background:
-                      "linear-gradient(to right, #D4A373 0%, #D4A373 " +
+                      "linear-gradient(to right, #F7B50C 0%, #F7B50C " +
                       (values[0] / MAX) * 100 +
-                      "%, #CCD5AE " +
+                      "%, #b4d150 " +
                       (values[1] / MAX) * 100 +
-                      "%, #D4A373 100%)",
+                      "%, #F7B50C 100%)",
                     borderRadius: "4px",
                   }}
                 >
@@ -197,7 +197,7 @@ const ShopProductsCategories: React.FC<ShopProductsCategoriesProps> = ({
                     ...props.style,
                     height: "20px",
                     width: "20px",
-                    backgroundColor: "#D4A373",
+                    backgroundColor: "#F7B50C",
                     borderRadius: "50%",
                     border: "2px solid white",
                     boxShadow: "0 0 3px rgba(0, 0, 0, 0.3)",
@@ -215,7 +215,7 @@ const ShopProductsCategories: React.FC<ShopProductsCategoriesProps> = ({
       </div>
 
       <div>
-        <ul className="space-y-2 border border-[#D4A373] rounded px-3 py-4 h-[258px] overflow-y-scroll">
+        <ul className="space-y-2 border border-[#F7B50C] rounded px-3 py-4 h-[258px] overflow-y-scroll">
           <h2 className="pb-2 text-base font-semibold">CATEGORY</h2>
           {shopSideBar?.map((cat) => (
             <li key={cat._id}>
@@ -278,8 +278,8 @@ const ShopProductsCategories: React.FC<ShopProductsCategoriesProps> = ({
         </ul>
       </div>
 
-      <div>
-        <div className="space-y-2 border border-[#D4A373] rounded px-3 py-4 h-[250px] overflow-y-scroll">
+      {/* <div>
+        <div className="space-y-2 border border-[#F7B50C] rounded px-3 py-4 h-[250px] overflow-y-scroll">
           <h2 className="pb-2 text-base font-semibold uppercase">Brands</h2>
           <div>
             {products?.brands?.map((brand: TBrand) => (
@@ -299,10 +299,10 @@ const ShopProductsCategories: React.FC<ShopProductsCategoriesProps> = ({
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div>
-        <div className="space-y-2 border border-[#D4A373] rounded px-3 py-4 h-[160px]">
+      {/* <div>
+        <div className="space-y-2 border border-[#F7B50C] rounded px-3 py-4 h-[160px]">
           <h2 className="pb-2 text-base font-semibold uppercase">Genders</h2>
 
           <div>
@@ -324,7 +324,7 @@ const ShopProductsCategories: React.FC<ShopProductsCategoriesProps> = ({
               ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -12,7 +12,7 @@ import { TbShoppingCartOff } from "react-icons/tb";
 import NavBar from "@/components/pages/header/NavBar/NavBar";
 
 export const metadata: Metadata = {
-  title: "Unicrescent | cart",
+  title: "Healthy Harvet Agro | cart",
   description: "Best E-commerce platform in BD",
 };
 
@@ -77,12 +77,29 @@ const Cart = async () => {
                   </div>
 
                   {/* Unit Price */}
-                  <div className="flex gap-2">
+                  {/* <div className="flex gap-2">
                     <p>৳ {product?.inventory?.price}</p>
                     <p className="text-red-600 line-through">
                       ৳ {product?.inventory?.mrpPrice}
                     </p>
-                  </div>
+                  </div> */}
+                  {product?.inventory?.price ===
+                  product?.inventory?.mrpPrice ? (
+                    <>
+                      <div className="flex gap-2">
+                        <p className="">৳ {product?.inventory?.mrpPrice}</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex gap-2">
+                        <p>৳ {product?.inventory?.price}</p>
+                        <p className="text-red-600 line-through">
+                          ৳ {product?.inventory?.mrpPrice}
+                        </p>
+                      </div>
+                    </>
+                  )}
 
                   {/* Size */}
                   <div>
@@ -100,7 +117,9 @@ const Cart = async () => {
                   <div>
                     <p>৳ {product?.subtotal}</p>
                     <p className="text-red-600 line-through">
-                      ৳ {product?.savedAmount}
+                      {typeof product?.savedAmount === "number" &&
+                        product.savedAmount > 0 &&
+                        `৳ ${product.savedAmount}`}
                     </p>
                   </div>
 
@@ -160,12 +179,23 @@ const Cart = async () => {
                     {/* Price */}
                     <div className="flex justify-between border-t border-black/5 py-3 px-3">
                       <p className="font-bold text-[15px]">Price</p>
-                      <div className="flex gap-2">
-                        <p>৳ {product?.product?.price}</p>
-                        <p className="text-red-600 line-through">
-                          ৳ {product?.product?.mrpPrice}
-                        </p>
-                      </div>
+                      {product?.product?.price ===
+                      product?.product?.mrpPrice ? (
+                        <>
+                          <div className="flex gap-2">
+                            <p className="">৳ {product?.product?.mrpPrice}</p>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex gap-2">
+                            <p>৳ {product?.product?.price}</p>
+                            <p className="text-red-600 line-through">
+                              ৳ {product?.product?.mrpPrice}
+                            </p>
+                          </div>
+                        </>
+                      )}
                     </div>
 
                     {/* Size */}
@@ -216,13 +246,13 @@ const Cart = async () => {
           </div>
           <Link
             href={products?.data?.cartDetails?.length ? "/checkout" : "/shop"}
-            className="text-white text-sm font-semibold items-center text-center w-[70%] sm:w-[50%] md:w-[40%]  bg-[#D4A373] rounded  hover:bg-[#CCD5AE] duration-300 px-2 py-2"
+            className="text-white text-sm font-semibold items-center text-center w-[70%] sm:w-[50%] md:w-[40%]  bg-[#F7B50C] rounded  hover:bg-[#b4d150] duration-300 px-2 py-2"
           >
             <span>Place Order</span>
           </Link>
           <Link
             href="/shop"
-            className="text-white text-sm font-semibold rounded items-center text-center  w-[70%] sm:w-[50%] md:w-[40%]  bg-[#CCD5AE] hover:bg-[#D4A373] px-2 py-2 mt-3 duration-300"
+            className="text-white text-sm font-semibold rounded items-center text-center  w-[70%] sm:w-[50%] md:w-[40%]  bg-[#b4d150] hover:bg-[#F7B50C] px-2 py-2 mt-3 duration-300"
           >
             <span>Conting Shopping</span>
           </Link>
@@ -230,10 +260,12 @@ const Cart = async () => {
         <div className="bg-[#F6F6F6] text-gray-600 rounded text-center py-5 px-8 my-5">
           <span>
             * If you wish to make a bulk order, please call us at{" "}
-            <span className="font-bold text-black">+8801735775093</span> or
+            <span className="font-bold text-black">+8801717822619</span> or
             email at{" "}
-            <span className="font-bold text-black">info@nohasan.com</span> for
-            more information.
+            <span className="font-bold text-black">
+              info@healthyHarvest.com
+            </span>{" "}
+            for more information.
           </span>
         </div>
         {/* You May Also Like */}

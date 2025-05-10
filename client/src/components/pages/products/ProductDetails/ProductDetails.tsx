@@ -90,7 +90,9 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
       };
 
       if (inventoryType == "inventory") {
-        product.inventoryRef = inventoryRef[0]._id;
+        product.inventoryRef = Array.isArray(inventoryRef)
+          ? inventoryRef[0]._id
+          : undefined;
       } else if (inventoryType == "levelInventory") {
         product.inventoryRef = selectedLevel;
       } else if (inventoryType == "colorInventory") {
@@ -148,17 +150,19 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                     inventoryType === "levelInventory" ||
                     inventoryType === "colorLevelInventory"
                   ) {
-                    selectedItem = inventoryRef.find(
-                      (item) => item._id === selectedLevel
-                    );
+                    selectedItem = Array.isArray(inventoryRef)
+                      ? inventoryRef.find((item) => item._id === selectedLevel)
+                      : undefined;
                   } else if (inventoryType === "colorInventory") {
-                    selectedItem = inventoryRef.find(
-                      (item) => item._id === selectedColor
-                    );
+                    selectedItem = Array.isArray(inventoryRef)
+                      ? inventoryRef.find((item) => item._id === selectedColor)
+                      : undefined;
                   }
 
                   // Fall back to index 0 if no valid selection
-                  const fallbackItem = inventoryRef[0];
+                  const fallbackItem = Array.isArray(inventoryRef)
+                    ? inventoryRef[0]
+                    : undefined;
                   const price = selectedItem?.price ?? fallbackItem?.price;
 
                   return price ? Number(price).toFixed(2) : "0.00";
@@ -175,17 +179,19 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                     inventoryType === "levelInventory" ||
                     inventoryType === "colorLevelInventory"
                   ) {
-                    selectedItem = inventoryRef.find(
-                      (item) => item._id === selectedLevel
-                    );
+                    selectedItem = Array.isArray(inventoryRef)
+                      ? inventoryRef.find((item) => item._id === selectedLevel)
+                      : undefined;
                   } else if (inventoryType === "colorInventory") {
-                    selectedItem = inventoryRef.find(
-                      (item) => item._id === selectedColor
-                    );
+                    selectedItem = Array.isArray(inventoryRef)
+                      ? inventoryRef.find((item) => item._id === selectedColor)
+                      : undefined;
                   }
 
                   // Fall back to index 0 if no valid selection
-                  const fallbackItem = inventoryRef[0];
+                  const fallbackItem = Array.isArray(inventoryRef)
+                    ? inventoryRef[0]
+                    : undefined;
                   const mrpPrice =
                     selectedItem?.mrpPrice ?? fallbackItem?.mrpPrice;
 
@@ -203,12 +209,8 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                   Select Size:
                 </h3>
                 <div className="flex items-center gap-2 text-sm font-semibold text-[#262626]/60 mt-1 cursor-pointer">
-                  {inventoryRef
-                    ?.filter(
-                      (value, index, item) =>
-                        index === item.findIndex((t) => t.level === value.level)
-                    )
-                    .map((size) => (
+                  {Array.isArray(inventoryRef) &&
+                    inventoryRef.map((size) => (
                       <p
                         key={size._id}
                         onClick={() => {
@@ -217,8 +219,8 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                           setSelectedColor(null);
                           setLevelError(false);
                         }}
-                        className={`p-1 border border-[#262626]/60 hover:bg-[#D4A373] hover:text-[#fff] duration-300 cursor-pointer rounded text-center flex items-center justify-center uppercase ${
-                          level === size.level ? "bg-[#D4A373] text-white" : ""
+                        className={`p-1 border border-[#262626]/60 hover:bg-[#F7B50C] hover:text-[#fff] duration-300 cursor-pointer rounded text-center flex items-center justify-center uppercase ${
+                          level === size.level ? "bg-[#F7B50C] text-white" : ""
                         }`}
                       >
                         {size.level}
@@ -244,31 +246,24 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                   Select Color:
                 </h3>
                 <div className="flex items-center gap-2 text-sm font-semibold text-[#262626]/60 mt-1">
-                  {inventoryRef
-                    ?.filter((item) =>
-                      inventoryType === "colorLevelInventory"
-                        ? item.level === level
-                        : true
-                    )
-                    .filter(
-                      (value, index, arr) =>
-                        index === arr.findIndex((t) => t.color === value.color)
-                    )
-                    .map((colorItem) => (
-                      <div
-                        key={colorItem._id}
-                        onClick={() => {
-                          setSelectedColor(colorItem._id);
-                          setColorError(false);
-                        }}
-                        className={`border ${
-                          selectedColor === colorItem._id
-                            ? "border-[#D4A373] border-2 w-[20px] h-[20px]"
-                            : "border-[#262626] w-[25px] h-[25px]"
-                        } rounded-full cursor-pointer`}
-                        style={{ backgroundColor: colorItem.color }}
-                      />
-                    ))}
+                  {Array.isArray(inventoryRef) &&
+                    inventoryRef.map(
+                      (colorItem: { _id: string; color: string }) => (
+                        <div
+                          key={colorItem._id}
+                          onClick={() => {
+                            setSelectedColor(colorItem._id);
+                            setColorError(false);
+                          }}
+                          className={`border ${
+                            selectedColor === colorItem._id
+                              ? "border-[#F7B50C] border-2 w-[20px] h-[20px]"
+                              : "border-[#262626] w-[25px] h-[25px]"
+                          } rounded-full cursor-pointer`}
+                          style={{ backgroundColor: colorItem.color }}
+                        />
+                      )
+                    )}
                 </div>
                 {colorError && (
                   <p className="text-red-500 text-sm mt-1">
@@ -293,7 +288,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
               <div className="w-full cursor-pointer">
                 <button
                   onClick={handleAddToCart}
-                  className="bg-[#D4A373] hover:bg-[#CCD5AE] duration-300 flex items-center gap-1 px-6 py-2.5 font-semibold text-sm  rounded text-[#fff] cursor-pointer"
+                  className="bg-[#F7B50C] hover:bg-[#b4d150] duration-300 flex items-center gap-1 px-6 py-2.5 font-semibold text-sm  rounded text-[#fff] cursor-pointer"
                 >
                   <span>
                     <FiPlus />
