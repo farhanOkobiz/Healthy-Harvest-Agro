@@ -169,7 +169,7 @@ const Footer: React.FC<FooterProps> = ({ userCartProducts }) => {
                 >
                   <FaFacebookF />
                 </a>
-                <a
+                {/* <a
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -177,7 +177,7 @@ const Footer: React.FC<FooterProps> = ({ userCartProducts }) => {
                   aria-label="Instagram"
                 >
                   <FaInstagram />
-                </a>
+                </a> */}
 
                 {/* <a
                   href="#"
@@ -189,7 +189,7 @@ const Footer: React.FC<FooterProps> = ({ userCartProducts }) => {
                   <FaInstagram />
                 </a> */}
 
-                <a
+                {/* <a
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -197,7 +197,7 @@ const Footer: React.FC<FooterProps> = ({ userCartProducts }) => {
                   aria-label="youtube"
                 >
                   <FaYoutube />
-                </a>
+                </a> */}
               </div>
 
               {/* <div className="mt-2">
