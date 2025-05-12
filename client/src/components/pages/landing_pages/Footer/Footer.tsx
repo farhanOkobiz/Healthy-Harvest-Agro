@@ -3,10 +3,10 @@
 import React from "react";
 import {
   FaFacebookF,
-  FaInstagram,
+  // FaInstagram,
   FaRegCreditCard,
   FaTruck,
-  FaYoutube,
+  // FaYoutube,
 } from "react-icons/fa";
 import { FaRegMessage, FaRightLeft } from "react-icons/fa6";
 import Link from "next/link";
