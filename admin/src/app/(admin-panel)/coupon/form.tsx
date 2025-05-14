@@ -179,7 +179,14 @@ export const CreateCouponForm: React.FC = () => {
                   {/* <Input placeholder="Enter startDate number" {...field} /> */}
                   <DatePicker
                     selected={field.value}
-                    onChange={field.onChange}
+                    onChange={(date) => {
+                      if (date) {
+                        // Force the time to be consistent (e.g., noon UTC)
+                        const adjustedDate = new Date(date);
+                        adjustedDate.setHours(12, 0, 0, 0); // Set to noon to avoid timezone issues
+                        field.onChange(adjustedDate);
+                      }
+                    }}
                     placeholderText="From Date"
                     className="w-full"
                   />
@@ -200,8 +207,15 @@ export const CreateCouponForm: React.FC = () => {
                   {/* <Input placeholder="Enter expireDate number" {...field} /> */}
                   <DatePicker
                     selected={field.value}
-                    onChange={field.onChange}
-                    placeholderText="Expire Date"
+                    onChange={(date) => {
+                      if (date) {
+                        // Force the time to be consistent (e.g., noon UTC)
+                        const adjustedDate = new Date(date);
+                        adjustedDate.setHours(12, 0, 0, 0); // Set to noon to avoid timezone issues
+                        field.onChange(adjustedDate);
+                      }
+                    }}
+                    placeholderText="From Date"
                     className="w-full"
                   />
                 </FormControl>
