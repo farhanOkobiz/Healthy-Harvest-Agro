@@ -34,8 +34,8 @@ app.use(globalErrorHandler);
 
 mongoose
   .connect(config.databaseUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
   })
   .then(() => console.log("Database connection successful! --------------"))
   .catch((err) => {
