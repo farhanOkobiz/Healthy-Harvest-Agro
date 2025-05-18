@@ -1,12 +1,12 @@
 {
   "name": "healthy-harvest-admin",
   "version": "0.1.0",
-  "author": "Ifshad Hasan Sharan",
+  "author": "Okobiz",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node server.js",
+    "start": "node server.mjs",
     "lint": "next lint",
     "migrate": "knex migrate:latest"
   },
